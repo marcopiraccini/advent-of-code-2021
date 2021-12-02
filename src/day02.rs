@@ -10,10 +10,10 @@ fn parse_input(input: &String) -> Vec<(&str, u32)> {
 
 pub fn part1(input: String) {
     let commands = parse_input(&input);
-    let res = commands.iter().fold((0, 0, 0), |acc, c| match c.0 {
-        "forward" => (acc.0 + c.1, acc.1, acc.2),
-        "up" => (acc.0, acc.1 - c.1, acc.2),
-        "down" => (acc.0, acc.1 + c.1, acc.2),
+    let res = commands.iter().fold((0, 0), |acc, c| match c.0 {
+        "forward" => (acc.0 + c.1, acc.1),
+        "up" => (acc.0, acc.1 - c.1),
+        "down" => (acc.0, acc.1 + c.1),
         _ => panic!("unknown"),
     });
     println!("Solution part 1: {:?}", res.0 * res.1);
