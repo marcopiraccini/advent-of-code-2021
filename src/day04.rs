@@ -35,30 +35,29 @@ impl Board {
         }
         return false;
     }
-}
-
-// return the solution if won, 0 otherwise
-fn draw(board: &mut Board, n: usize) -> usize {
-    for r in 0..5 {
-        for c in 0..5 {
-            if board.board[r][c].0 == n {
-                board.board[r][c] = (n, true);
-            }
-        }
-    }
-    if board.did_win() {
-        board.won = true;
-        let mut unmarked_sum = 0;
+    // return the solution if won, 0 otherwise
+    fn draw(&mut self, n: usize) -> usize {
         for r in 0..5 {
             for c in 0..5 {
-                if !board.board[r][c].1 {
-                    unmarked_sum += board.board[r][c].0;
+                if self.board[r][c].0 == n {
+                    self.board[r][c] = (n, true);
                 }
             }
         }
-        return n * unmarked_sum;
+        if self.did_win() {
+            self.won = true;
+            let mut unmarked_sum = 0;
+            for r in 0..5 {
+                for c in 0..5 {
+                    if !self.board[r][c].1 {
+                        unmarked_sum += self.board[r][c].0;
+                    }
+                }
+            }
+            return n * unmarked_sum;
+        }
+        return 0;
     }
-    return 0;
 }
 
 fn parse_drawns(input: &String) -> Vec<usize> {
@@ -90,11 +89,10 @@ fn parse_boards(input: &String) -> Vec<Board> {
 pub fn part1(input: String) {
     let drawns = parse_drawns(&input);
     let mut boards = parse_boards(&input);
-
     'outer: for n in drawns {
         for i in 0..boards.len() {
             let board = &mut boards[i];
-            let res = draw(board, n);
+            let res = board.draw(n);
             if res > 0 {
                 println!("Solution part 1: {:?}", res);
                 break 'outer;
@@ -111,7 +109,7 @@ pub fn part2(input: String) {
         for i in 0..boards.len() {
             let board = &mut boards[i];
             if !board.won {
-                res = draw(board, n);
+                res = board.draw(n);
             }
         }
     }
