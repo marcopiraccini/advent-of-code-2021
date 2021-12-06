@@ -17,7 +17,7 @@ fn run_gen(f: Vec<usize>, gen: usize) -> usize {
         for age in 0..9 {
             let n = fish[age];
             if age == 0 {
-                // if age is 0, reset one countdown for a fish an create a new one iwth countsown 8
+                // if age is 0, reset one countdown for a fish an create a new one with countdown 8
                 new_gen[6] += n;
                 new_gen[8] += n;
             } else {
