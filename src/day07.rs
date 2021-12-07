@@ -26,7 +26,8 @@ pub fn part2(input: String) {
     let mut crabs = parse_input(input.clone());
     crabs.sort();
     let max = *(crabs.iter().max().unwrap());
-    let mut min = isize::MAX; // Yes, this can be optimized, but is not really necessary in this case...
+    let mut min = isize::MAX;
+    // Yes, this can be optimized, but is not really necessary in this case...
     for n in 0..max {
         let total_cost = crabs.iter().fold(0, |acc, &c| acc + cost(c - n));
         if total_cost < min {
