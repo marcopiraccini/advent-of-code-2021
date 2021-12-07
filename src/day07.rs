@@ -21,8 +21,7 @@ fn cost(n: isize) -> isize {
 }
 
 pub fn part2(input: String) {
-    let mut crabs = parse_input(input.clone());
-    crabs.sort();
+    let crabs = parse_input(input.clone());
     let max = *(crabs.iter().max().unwrap());
     let mut min = isize::MAX;
     // Yes, this can be optimized, but is not really necessary in this case...
