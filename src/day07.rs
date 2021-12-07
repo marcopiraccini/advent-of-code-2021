@@ -15,11 +15,9 @@ pub fn part1(input: String) {
 }
 
 fn cost(n: isize) -> isize {
-    let mut res = 0;
-    for i in 0..isize::abs(n) + 1 {
-        res += i;
-    }
-    res as isize
+    (0..isize::abs(n) + 1)
+        .enumerate()
+        .fold(0, |acc: isize, (i, _)| acc + i as isize)
 }
 
 pub fn part2(input: String) {
