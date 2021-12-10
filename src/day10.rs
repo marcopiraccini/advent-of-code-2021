@@ -78,10 +78,9 @@ pub fn part2(input: String) {
             }
         }
         if stack.len() != 0 && !corrupted {
-            let score = score_stack(&stack);
-            ret.push(score);
+            ret.push(score_stack(&stack));
         }
-        ret.sort();
     }
+    ret.sort();
     println!("Solution part 2: {:?}", ret[ret.len() / 2]);
 }
