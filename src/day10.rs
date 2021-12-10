@@ -28,11 +28,10 @@ fn score(ch: char) -> usize {
 }
 
 pub fn part1(input: String) {
-    let mut stack: VecDeque<char> = VecDeque::new();
     let lines = parse_input(&input);
-    let mut errors: Vec<char> = Vec::new();
     let mut ret = 0;
     for line in &lines {
+        let mut stack: VecDeque<char> = VecDeque::new();
         for ch in line {
             if *ch == '(' || *ch == '[' || *ch == '{' || *ch == '<' {
                 stack.push_back(*ch);
@@ -40,7 +39,6 @@ pub fn part1(input: String) {
             if *ch == ')' || *ch == ']' || *ch == '}' || *ch == '>' {
                 let last = stack.pop_back().unwrap();
                 if !closing(last, *ch) {
-                    errors.push(*ch);
                     ret += score(*ch);
                 }
             }
