@@ -11,33 +11,22 @@ fn parse_input(input: &String) -> Vec<Vec<usize>> {
         .collect::<Vec<_>>()
 }
 
-fn get_adiacent(x: usize, y: usize) -> Vec<(usize, usize)> {
+fn get_adiacent(xx: usize, yy: usize) -> Vec<(usize, usize)> {
     let mut ret = Vec::new();
-    if x > 0 {
-        if y > 0 {
-            ret.push((x - 1, y - 1));
-        }
-        ret.push((x - 1, y));
-        if y < SIZE - 1 {
-            ret.push((x - 1, y + 1));
-        }
-    }
-    if y > 0 {
-        ret.push((x, y - 1));
-    }
-    if y < SIZE - 1 {
-        ret.push((x, y + 1));
-    }
-    if x < SIZE - 1 {
-        if y > 0 {
-            ret.push((x + 1, y - 1));
-        }
-        ret.push((x + 1, y));
-        if y < SIZE - 1 {
-            ret.push((x + 1, y + 1));
-        }
-    }
-    return ret;
+    let x = xx as isize;
+    let y = yy as isize;
+    ret.push((x - 1, y - 1));
+    ret.push((x - 1, y));
+    ret.push((x - 1, y + 1));
+    ret.push((x, y - 1));
+    ret.push((x, y + 1));
+    ret.push((x + 1, y - 1));
+    ret.push((x + 1, y));
+    ret.push((x + 1, y + 1));
+    ret.into_iter()
+        .filter(|el| el.0 >= 0 && el.0 < SIZE as isize && el.1 >= 0 && el.1 < SIZE as isize)
+        .map(|el| (el.0 as usize, el.1 as usize))
+        .collect::<Vec<_>>()
 }
 
 fn apply_step(octs: &mut Vec<Vec<usize>>) -> usize {
