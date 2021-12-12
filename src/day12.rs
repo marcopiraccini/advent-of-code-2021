@@ -1,8 +1,7 @@
 use std::collections::{HashMap, HashSet};
 
-fn parse_input(input: String) -> HashMap<&'static str, Vec<&'static str>> {
-    let input_str = Box::leak(input.into_boxed_str());
-    input_str
+fn parse_input(input: &String) -> HashMap<&str, Vec<&str>> {
+    input
         .lines()
         .map(|l| {
             let l = l.split('-').collect::<Vec<&str>>();
@@ -26,10 +25,10 @@ fn parse_input(input: String) -> HashMap<&'static str, Vec<&'static str>> {
 }
 
 fn count_paths<'a>(
-    s: &'static str,
+    s: &str,
     e: &str,
-    paths: &HashMap<&'static str, Vec<&'static str>>,
-    seen: &mut HashSet<&'static str>,
+    paths: &HashMap<&str, Vec<&str>>,
+    seen: &mut HashSet<&str>,
     visited_twice: bool,
 ) -> usize {
     // Rust doesn't support optional arguments :(
@@ -56,14 +55,14 @@ fn count_paths<'a>(
 }
 
 pub fn part1(input: String) {
-    let paths = parse_input(input);
-    let mut seen = HashSet::<&'static str>::new();
+    let paths = parse_input(&input);
+    let mut seen = HashSet::<&str>::new();
     let res = count_paths("start", "end", &paths, &mut seen, true);
     println!("Solution part 1: {:?}", res);
 }
 
 pub fn part2(input: String) {
-    let paths = parse_input(input);
+    let paths = parse_input(&input);
     let mut seen = HashSet::<&'static str>::new();
     let res = count_paths("start", "end", &paths, &mut seen, false);
     println!("Solution part 2: {:?}", res);
