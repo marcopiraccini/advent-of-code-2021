@@ -1,6 +1,9 @@
 use std::cmp::Ordering;
 use std::collections::{BinaryHeap, HashSet};
 
+// solution is basically in rust documentation :)
+// https://doc.rust-lang.org/std/collections/binary_heap/index.html
+
 #[derive(PartialEq, Eq)]
 struct Node {
     p: (usize, usize),
@@ -25,7 +28,6 @@ fn parse_input(input: &String) -> Vec<Vec<usize>> {
         .map(|l| {
             l.chars()
                 .map(|x| x.to_digit(10).unwrap() as usize)
-                // let mut queue: VecDeque<Node> = VecDeque::new();
                 .collect::<Vec<usize>>()
         })
         .collect::<Vec<_>>()
@@ -65,7 +67,7 @@ fn explore_map(map: Vec<Vec<usize>>) -> usize {
             return node.c;
         }
         // insert returns false if the value is already there, so if already
-        // visiterd, we continue
+        // visited, we continue
         if !visited.insert(node.p) {
             continue;
         }
