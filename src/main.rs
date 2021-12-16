@@ -68,17 +68,19 @@ fn main() {
 
     // Time it
     if to_run.0 != noop {
+        let cl = input.clone();
         println!("Running Part 1");
         let part1_start = Instant::now();
-        to_run.0(input.clone());
+        to_run.0(cl);
         let part1_dur = part1_start.elapsed();
         println!("Took {}", fmt_dur(part1_dur));
     }
 
     if to_run.1 != noop {
+        let cl = input.clone();
         println!("Running Part 2");
         let part2_start = Instant::now();
-        to_run.1(input.clone());
+        to_run.1(cl);
         let part2_dur = part2_start.elapsed();
         println!("Took {}", fmt_dur(part2_dur));
     }
