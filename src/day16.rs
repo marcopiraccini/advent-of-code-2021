@@ -218,23 +218,4 @@ mod tests {
         assert_eq!(4, operators[2].type_id);
         assert_eq!(len, 51);
     }
-
-    fn day16_part1_operator_3() {
-        let packetstr =
-            "00111000000000000110111101000101001010010001001000000000000000000000000000000"
-                .chars()
-                .collect_vec();
-        let (packet, len) = parse_packet(&packetstr);
-        assert_eq!(1, packet.version);
-        assert_eq!(6, packet.type_id);
-        assert_eq!(0, packet.v);
-        let operators = packet.operators;
-        assert_eq!(6, operators[0].version);
-        assert_eq!(4, operators[0].type_id);
-        assert_eq!(10, operators[0].v);
-        assert_eq!(2, operators[1].version);
-        assert_eq!(4, operators[1].type_id);
-        assert_eq!(20, operators[1].v);
-        assert_eq!(len, 49);
-    }
 }
