@@ -41,9 +41,9 @@ pub fn part1(input: String) {
     let target = parse_input(input);
     let initial_position = (0, 0);
     const LOWER_VX: isize = 0;
-    const HIGHER_VX: isize = 300;
-    const LOWER_VY: isize = -300;
-    const HIGHER_VY: isize = 300;
+    const HIGHER_VX: isize = 100;
+    const LOWER_VY: isize = -250;
+    const HIGHER_VY: isize = 250;
     let mut res = -100;
 
     for vx in LOWER_VX..HIGHER_VX {
@@ -76,9 +76,9 @@ pub fn part2(input: String) {
     let initial_position = (0, 0);
     // Here I just played with ranges until I found the correct answer :)
     const LOWER_VX: isize = 0;
-    const HIGHER_VX: isize = 400;
-    const LOWER_VY: isize = -300;
-    const HIGHER_VY: isize = 400;
+    const HIGHER_VX: isize = 100;
+    const LOWER_VY: isize = -250;
+    const HIGHER_VY: isize = 250;
 
     let mut res = HashSet::new();
 
